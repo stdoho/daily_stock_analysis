@@ -426,13 +426,15 @@ git push
 
 ### Schedule Details
 
-Default configuration: **Monday to Friday, 18:00 Beijing Time** auto-execution
+Default configuration: **Monday to Friday, stock analysis at 06:18 Beijing Time and daily market review at 21:18**. The 10:18 stock-analysis schedule is currently disabled.
 
 Modify time: Edit cron expression in `.github/workflows/00-daily-analysis.yml`:
 
 ```yaml
 schedule:
-  - cron: '0 10 * * 1-5'  # UTC time, +8 = Beijing time
+  - cron: '18 22 * * 0-4'  # Mon-Fri 06:18 Beijing Time, stock analysis
+  # - cron: '18 2 * * 1-5' # Mon-Fri 10:18 Beijing Time, stock analysis (disabled)
+  - cron: '18 13 * * 1-5'  # Mon-Fri 21:18 Beijing Time, daily market review
 ```
 
 Common cron examples:
